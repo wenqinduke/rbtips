@@ -1,13 +1,18 @@
 @import (reference) "@{STATIC_ROOT}rb/css/defs.less";
 
 @bg-color: #FFFA99;
+@bg-color-tip:#7FE579;
 
-#motd {
-  background: @bg-color;
-  border-bottom: 1px darken(@bg-color, 55%) solid;
+.motd(@background-color) {
+  background: @background-color;
+  border-bottom: 1px darken(@background-color, 55%) solid;
   font-size: 110%;
   padding: @headerbar-padding;
   padding-left: @headerbar-padding-left - 20px;
+}
+
+#motd {
+  .motd(@bg-color)
 }
 
 #motd-close {
@@ -24,3 +29,11 @@
     text-decoration: none;
   }
 }
+
+#motd-tip {
+  .motd(@bg-color-tip)
+}
+
+#motd-tip-close:extend(#motd-close){}
+
+#motd-tip-message:extend(#motd-message){}
